@@ -1,41 +1,38 @@
-I've removed all mentions of the statistics dashboard, its features, the statistics route, and the associated technology from the project documentation.
-
-Here is the revised README content for BookVerse:
 
 📚 BookVerse – MERN Book Review Platform
 BookVerse is a full-stack MERN application where users can explore, add, and review books. It provides user authentication and a modern dark/light interface.
 
-🚀 Features
-👤 Authentication
-Signup, Login, and Logout functionality
+Features
+  Authentication
+  Signup, Login, and Logout functionality
+  
+  Secure JWT-based authentication
+  
+  User-specific profile page
+  
+  Book Management
+  Add new books with genre, author, and rating
+  
+  View list of all books
+  
+  Add and edit reviews
+  
+  Average rating calculation
+  
+  Dark Mode
+  Built-in theme switcher using Context API
 
-Secure JWT-based authentication
-
-User-specific profile page
-
-📘 Book Management
-Add new books with genre, author, and rating
-
-View list of all books
-
-Add and edit reviews
-
-Average rating calculation
-
-🌗 Dark Mode
-Built-in theme switcher using Context API
-
-🛠 Tech Stack
-Layer	Technologies
-Frontend	React.js, Vite, Tailwind CSS, Axios
-State Management	React Context API
-Backend	Node.js, Express.js
-Database	MongoDB, Mongoose
-Authentication	JWT (JSON Web Token), bcrypt.js
+Tech Stack
+ Layer	Technologies
+ Frontend	React.js, Vite, Tailwind CSS, Axios
+ State Management	React Context API
+ Backend	Node.js, Express.js
+ Database	MongoDB, Mongoose
+ Authentication	JWT (JSON Web Token), bcrypt.js
 
 Export to Sheets
-⚙ Setup Instructions (Run This Step-by-Step)
-1️⃣ Clone the Repository
+ Setup Instructions (Run This Step-by-Step)
+ Clone the Repository
 Bash
 
 git clone https://github.com/your-username/bookverse.git
