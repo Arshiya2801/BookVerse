@@ -9,7 +9,13 @@ import reviewRoutes from './routes/reviews.js';
 
 dotenv.config();
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:8000",                // local dev
+    "https://book-verse-lilac.vercel.app/"      // your actual Vercel URL
+  ],
+  credentials: true
+}));
 app.use(express.json());
 
 connectDB();
