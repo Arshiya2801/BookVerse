@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'http://localhost:8000/api', 
+  baseURL: 'https://bookverse-9r9b.onrender.com/api', 
   timeout: 10000,
 });
 
