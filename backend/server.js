@@ -11,8 +11,8 @@ dotenv.config();
 const app = express();
 app.use(cors({
   origin: [
-    "http://localhost:8000",                // local dev
-    "https://book-verse-lilac.vercel.app/"      // your actual Vercel URL
+    "http://localhost:5173",                // local dev
+    "https://book-verse-lilac.vercel.app"      // your actual Vercel URL
   ],
   credentials: true
 }));
