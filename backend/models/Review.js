@@ -7,7 +7,7 @@ const reviewSchema = new mongoose.Schema({
   reviewText: { type: String }
 }, { timestamps: true });
 
-// one review per user per book
+
 reviewSchema.index({ bookId: 1, userId: 1 }, { unique: true });
 
 const Review = mongoose.model('Review', reviewSchema);

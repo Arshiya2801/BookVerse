@@ -12,15 +12,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// connect to DB
 connectDB();
 
-// routes
+
 app.use('/api/auth', authRoutes);
 app.use('/api/books', bookRoutes);
 app.use('/api/reviews', reviewRoutes);
 
-// health
+
 app.get('/', (req, res) => res.json({ ok: true, env: process.env.NODE_ENV || 'dev' }));
 
 const PORT = process.env.PORT || 5000;

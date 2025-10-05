@@ -1,29 +1,29 @@
-// src/pages/BookList.jsx
+
 import React, { useEffect, useState, useCallback } from 'react';
-import API from '../api/axios'; // make sure this file exists and baseURL is set to your backend /api
+import API from '../api/axios'; 
 import SearchSortBar from '../components/SearchSortBar';
 import BookCard from '../components/BookCard';
 
 export default function BookListPage() {
   const [page, setPage] = useState(1);
   const [pages, setPages] = useState(1);
-  const [booksPage, setBooksPage] = useState([]);     // books of current page
-  const [allBooksCache, setAllBooksCache] = useState(null); // cached all books for search
+  const [booksPage, setBooksPage] = useState([]);     
+  const [allBooksCache, setAllBooksCache] = useState(null); 
   const [filtered, setFiltered] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [sortOption, setSortOption] = useState('');
 
-  // fetch just one page (standard paginated view)
+ 
   const fetchPage = useCallback(async (p = 1) => {
     setLoading(true);
     try {
       const { data } = await API.get(`/books?page=${p}`);
-      // expected backend response: { books, total, page, pages }
+      
       setBooksPage(data.books || []);
       setPages(data.pages || 1);
       setPage(data.page || p);
-      // if search not active, show this
+      
       if (!searchTerm) setFiltered(data.books || []);
     } catch (err) {
       console.error('fetchPage error', err);
@@ -34,7 +34,7 @@ export default function BookListPage() {
     }
   }, [searchTerm]);
 
-  // fetch all pages (used for global search)
+  
   const fetchAllBooks = useCallback(async () => {
     if (allBooksCache) return allBooksCache;
     setLoading(true);
@@ -58,17 +58,16 @@ export default function BookListPage() {
     }
   }, [allBooksCache]);
 
-  // effect: load page when page changes (only when no active search)
+  
   useEffect(() => {
     if (!searchTerm) fetchPage(page);
   }, [page, fetchPage, searchTerm]);
 
-  // effect: apply search & sort
   useEffect(() => {
     let active = true;
     const apply = async () => {
       if (!searchTerm) {
-        // no search: show paginated data already fetched
+        
         let arr = [...booksPage];
         if (sortOption === 'rating') arr.sort((a,b) => (b.averageRating||0) - (a.averageRating||0));
         if (sortOption === 'year') arr.sort((a,b) => (b.year||0) - (a.year||0));
@@ -76,7 +75,7 @@ export default function BookListPage() {
         return;
       }
 
-      // global search: fetch all books once then filter
+      
       const all = await fetchAllBooks();
       const term = searchTerm.trim().toLowerCase();
       let results = all.filter(b =>
@@ -89,7 +88,7 @@ export default function BookListPage() {
 
       if (active) {
         setFiltered(results);
-        // when searching, disable pagination display (or optionally show page=1 of 1)
+        
       }
     };
 
@@ -97,7 +96,7 @@ export default function BookListPage() {
     return () => { active = false; };
   }, [searchTerm, sortOption, booksPage, fetchAllBooks]);
 
-  // clear search/sort
+ 
   const handleClear = () => {
     setSearchTerm('');
     setSortOption('');
@@ -105,7 +104,7 @@ export default function BookListPage() {
     fetchPage(page);
   };
 
-  // initial load
+ 
   useEffect(() => { fetchPage(1); }, [fetchPage]);
 
   return (
@@ -128,7 +127,7 @@ export default function BookListPage() {
         )}
       </div>
 
-      {/* Pagination controls — only meaningful when not searching */}
+      
       {!searchTerm && (
         <div className="flex justify-center items-center mt-8 space-x-3">
           <button

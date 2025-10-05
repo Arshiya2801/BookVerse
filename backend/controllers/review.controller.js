@@ -1,8 +1,6 @@
-// controllers/review.controller.js
+
 import Review from '../models/Review.js';
 import Book from '../models/Book.js';
-
-// ➕ Add review
 export const addReview = async (req, res) => {
   try {
     const { rating, reviewText } = req.body;
@@ -15,7 +13,7 @@ export const addReview = async (req, res) => {
       userId: req.user._id,
     });
 
-    // Update average rating
+    
     const reviews = await Review.find({ bookId });
     const avgRating =
       reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length;
@@ -28,7 +26,7 @@ export const addReview = async (req, res) => {
   }
 };
 
-// ✏️ Edit review
+
 export const updateReview = async (req, res) => {
   try {
     const review = await Review.findById(req.params.id);
@@ -48,7 +46,7 @@ export const updateReview = async (req, res) => {
   }
 };
 
-// 🗑️ Delete review
+
 export const deleteReview = async (req, res) => {
   try {
     const review = await Review.findById(req.params.id);
@@ -65,7 +63,7 @@ export const deleteReview = async (req, res) => {
   }
 };
 
-// 📊 Get all reviews for a book
+
 export const getReviewsByBook = async (req, res) => {
   try {
     const reviews = await Review.find({ bookId: req.params.bookId })

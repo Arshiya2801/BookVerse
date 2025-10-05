@@ -1,7 +1,7 @@
-// controllers/book.controller.js
+
 import Book from '../models/Book.js';
 
-// 📘 Add new book
+
 export const addBook = async (req, res) => {
   try {
     const { title, author, description, genre, year } = req.body;
@@ -25,7 +25,7 @@ export const addBook = async (req, res) => {
   }
 };
 
-// 📚 Get all books (with pagination)
+
 export const getBooks = async (req, res) => {
   try {
     const page = Number(req.query.page) || 1;
@@ -45,7 +45,7 @@ export const getBooks = async (req, res) => {
   }
 };
 
-// 📖 Get a single book by ID
+
 export const getBookById = async (req, res) => {
   try {
     const book = await Book.findById(req.params.id).populate('addedBy', 'name');
@@ -56,7 +56,7 @@ export const getBookById = async (req, res) => {
   }
 };
 
-// ✏️ Update a book
+
 export const updateBook = async (req, res) => {
   try {
     const book = await Book.findById(req.params.id);
@@ -76,7 +76,7 @@ export const updateBook = async (req, res) => {
   }
 };
 
-// 🗑️ Delete a book
+
 export const deleteBook = async (req, res) => {
   try {
     const book = await Book.findById(req.params.id);

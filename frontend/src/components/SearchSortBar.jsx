@@ -1,4 +1,4 @@
-// src/components/SearchSortBar.jsx
+
 import React from 'react';
 
 export default function SearchSortBar({ searchTerm, setSearchTerm, sortOption, setSortOption, onClear }) {

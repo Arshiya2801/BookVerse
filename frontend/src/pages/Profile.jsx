@@ -1,4 +1,4 @@
-// src/pages/Profile.jsx
+
 import React, { useEffect, useState } from 'react';
 import API from '../api/axios';
 import Layout from '../components/Layout';
@@ -13,10 +13,10 @@ export default function Profile() {
   useEffect(() => {
     (async () => {
       try {
-        // simple approach: fetch books and filter by addedBy
+        
         const { data } = await API.get('/books?page=1');
         setBooks((data.books || []).filter(b => String(b.addedBy?._id || b.addedBy) === (user?.id || user?._id)));
-        // fetch reviews of user - backend doesn't have a direct endpoint but if you added one you can use it.
+        
         const { data: allBooks } = await API.get('/books?page=1');
       } catch (err) {
         console.error(err);

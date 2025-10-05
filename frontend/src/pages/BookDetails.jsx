@@ -1,4 +1,4 @@
-// src/pages/BookDetails.jsx
+
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import API from '../api/axios';
@@ -35,7 +35,7 @@ export default function BookDetails() {
     e.preventDefault();
     try {
       if (editingReview) {
-        // update review
+        
         await API.put(`/reviews/${editingReview._id}`, { rating, reviewText });
         setEditingReview(null);
       } else {

@@ -1,4 +1,4 @@
-// src/components/ReviewItem.jsx
+
 import React from 'react';
 
 export default function ReviewItem({ review, onEdit, onDelete, isOwner }) {

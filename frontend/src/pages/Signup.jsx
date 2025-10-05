@@ -1,4 +1,4 @@
-// src/pages/Signup.jsx
+
 import React, { useState } from 'react';
 import API from '../api/axios';
 import { useNavigate, Link } from 'react-router-dom';
